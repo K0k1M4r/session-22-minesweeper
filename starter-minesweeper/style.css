@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+    --win-bg: #c0c0c0;
+    --win-white: #ffffff;
+    --win-gray: #808080;
+    --win-black: #000000;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #008080; /* Win95 desktop teal */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.window {
+    background-color: var(--win-bg);
+    border-top: 2px solid var(--win-white);
+    border-left: 2px solid var(--win-white);
+    border-right: 2px solid var(--win-black);
+    border-bottom: 2px solid var(--win-black);
+    padding: 3px;
+    box-shadow: 1px 1px 0px 0px rgba(0,0,0,0.5);
+    display: inline-block;
+}
+
+.title-bar {
+    background-color: #000080;
+    color: white;
+    padding: 2px 4px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+}
+
+.game-container {
+    background-color: var(--win-bg);
+    border-top: 2px solid var(--win-gray);
+    border-left: 2px solid var(--win-gray);
+    border-right: 2px solid var(--win-white);
+    border-bottom: 2px solid var(--win-white);
+    padding: 6px;
+}
+
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+    margin-bottom: 6px;
+    border-top: 2px solid var(--win-gray);
+    border-left: 2px solid var(--win-gray);
+    border-right: 2px solid var(--win-white);
+    border-bottom: 2px solid var(--win-white);
+}
+
+.counter {
+    background-color: black;
+    color: #ff0000;
+    font-family: 'VT323', monospace;
+    font-size: 36px;
+    line-height: 1;
+    padding: 2px 4px;
+    border-top: 2px solid var(--win-gray);
+    border-left: 2px solid var(--win-gray);
+    border-right: 2px solid var(--win-white);
+    border-bottom: 2px solid var(--win-white);
+    letter-spacing: 2px;
+    width: 65px;
+    text-align: right;
+}
+
+.smiley {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+    background-color: var(--win-bg);
+    border-top: 2px solid var(--win-white);
+    border-left: 2px solid var(--win-white);
+    border-right: 2px solid var(--win-gray);
+    border-bottom: 2px solid var(--win-gray);
+    cursor: pointer;
+    vertical-align: middle;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.smiley:active, .smiley.pressed {
+    border-top: 2px solid var(--win-gray);
+    border-left: 2px solid var(--win-gray);
+    border-right: 2px solid var(--win-white);
+    border-bottom: 2px solid var(--win-white);
+    padding-top: 2px;
+    padding-left: 2px;
+}
+
+#grid-wrapper {
+    border-top: 3px solid var(--win-gray);
+    border-left: 3px solid var(--win-gray);
+    border-right: 3px solid var(--win-white);
+    border-bottom: 3px solid var(--win-white);
+    display: inline-block;
+}
+
+.grid {
+    display: grid;
+    /* JS configures grid-template-columns */
+    background-color: var(--win-gray);
+}
+
+.cell {
+    width: 24px;
+    height: 24px;
+    background-color: var(--win-bg);
+    border-top: 2px solid var(--win-white);
+    border-left: 2px solid var(--win-white);
+    border-right: 2px solid var(--win-gray);
+    border-bottom: 2px solid var(--win-gray);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: default;
+    user-select: none;
+}
+
+.cell.revealed {
+    border: 1px solid var(--win-gray);
+    border-right-color: var(--win-bg);
+    border-bottom-color: var(--win-bg);
+}
+
+.cell.mine {
+    background-image: url('image/bomb.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: red;
+    border: 1px solid var(--win-gray);
+    border-right-color: var(--win-bg);
+    border-bottom-color: var(--win-bg);
+}
+
+.cell.mine-revealed {
+    background-image: url('image/bomb.png');
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid var(--win-gray);
+    border-right-color: var(--win-bg);
+    border-bottom-color: var(--win-bg);
+}
+
+.cell.flag {
+    background-image: url('image/flag.png');
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Colors for adjacent numbers */
+.cell[data-adjacent="1"] { color: #0000ff; }
+.cell[data-adjacent="2"] { color: #008000; }
+.cell[data-adjacent="3"] { color: #ff0000; }
+.cell[data-adjacent="4"] { color: #000080; }
+.cell[data-adjacent="5"] { color: #800000; }
+.cell[data-adjacent="6"] { color: #008080; }
+.cell[data-adjacent="7"] { color: #000000; }
+.cell[data-adjacent="8"] { color: #808080; }
+
+.footer-note {
+    font-size: 11px;
+    color: var(--win-black);
+    text-align: center;
+    margin-top: 4px;
+}
