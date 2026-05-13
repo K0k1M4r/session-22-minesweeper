@@ -23,7 +23,8 @@
  */
 function calculateGridSize(rows, cols) {
   // TODO: Return rows multiplied by cols
-  return 1; // TEMPORARY
+  let result = rows * cols;
+  return result; // TEMPORARY
 }
 
 /**
@@ -45,7 +46,8 @@ function calculateGridSize(rows, cols) {
  */
 function isOutOfBounds(row, col, totalRows, totalCols) {
   // TODO: Write a return statement that evaluates the 4 conditions combined by ||
-  return false; // TEMPORARY - This will crash the engine on edge clicks!
+  let totalCalc = row < 0 || row >=  totalRows || col < 0 || col >=  totalCols;
+  return totalCalc; // TEMPORARY - This will crash the engine on edge clicks!
 }
 /**
  * Task 3: Identify Anomalies (Mines)
@@ -58,7 +60,7 @@ function isOutOfBounds(row, col, totalRows, totalCols) {
  */
 function isMineCell(cellValue) {
   // TODO: Use strict equality (===) to check if cellValue is 9
-  return false; // TEMPORARY
+    return cellValue === 9; // TEMPORARY
 }
 
 /**
@@ -70,7 +72,7 @@ function isMineCell(cellValue) {
  */
 function isSafeCell(cellValue) {
   // TODO: Use strict inequality (!==) to check if cellValue is not 9
-  return false; // TEMPORARY
+  return cellValue !== 9; // TEMPORARY
 }
 
 /**
@@ -84,7 +86,7 @@ function isSafeCell(cellValue) {
  */
 function isGameWon(revealedCells, totalSafeCells) {
   // TODO: Use strict equality (===)
-  return false; // TEMPORARY
+  return revealedCells === totalSafeCells; // TEMPORARY
 }
 
 /**
