@@ -98,5 +98,5 @@ function isGameWon(revealedCells, totalSafeCells) {
  */
 function calculateScore(revealedCount) {
   // TODO: Multiply revealedCount by 10 and return it
-  return 0; // TEMPORARY
+  return revealedCount * 10; // TEMPORARY
 }
